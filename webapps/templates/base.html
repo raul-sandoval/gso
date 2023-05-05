@@ -9,6 +9,14 @@
         <link rel="stylesheet" href="{{url_for('static', filename='plugins/fontawesome-free/css/all.min.css')}}">
         <link rel="stylesheet" href="{{url_for('static', filename='plugins/toastr/toastr.min.css')}}">
         <link rel="stylesheet" href="{{url_for('static', filename='css/adminlte.min.css')}}">
+        <style>
+            .main-content {
+                /* background-image: linear-gradient(rgba(50,50,50,0.8), rgba(50,50,50,0.8)), url("{{url_for('static', filename='img/bg.jpg')}}"); */
+                background-color: rgb(40, 49, 54);
+                /* background-repeat: no-repeat;
+                background-size: 100% 100%; */
+            }
+        </style>
     </head>
     <body class="hold-transition layout-top-nav layout-fixed">
         <div class="wrapper">
@@ -16,7 +24,7 @@
                 <img class="animation__shake" src="{{url_for('static', filename='img/logo_2.png')}}" alt="Expeditors" height="60" width="60">
             </div>
             {% include 'navbar.html' %}
-            <div class="content-wrapper">
+            <div class="content-wrapper main-content">
                 <div class="content-header">
                     <div class="container-fluid">
                         <div class="row mb-2">
