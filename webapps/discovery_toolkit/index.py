@@ -14,6 +14,5 @@ from webapps.discovery_toolkit import discovery_toolkit_blueprint
 def index():
     response = {}
 
-    flash(message='Loading data',category='info')
     return render_template(APP_NAME + '/index.html')
 ########## @discovery_toolkit_blueprint.route("/",methods=['GET'])  [END]  ##########
