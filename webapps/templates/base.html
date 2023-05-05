@@ -12,7 +12,7 @@
         <style>
             .main-content {
                 /* background-image: linear-gradient(rgba(50,50,50,0.8), rgba(50,50,50,0.8)), url("{{url_for('static', filename='img/bg.jpg')}}"); */
-                background-color: rgb(40, 49, 54);
+                background-color: rgba(40, 49, 54,0.3);
                 /* background-repeat: no-repeat;
                 background-size: 100% 100%; */
             }
@@ -47,7 +47,9 @@
         <script src="{{url_for('static', filename='plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{url_for('static', filename='plugins/toastr/toastr.min.js')}}"></script>
         <script src="{{url_for('static', filename='js/adminlte.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/chart.js/Chart.min.js')}}"></script>
         <!-- <script src="{{url_for('static', filename='js/demo.js')}}"></script> -->
+        {% block scripts %}{% endblock %}
         <script>
             toastr.options = {
                 "closeButton": true,
