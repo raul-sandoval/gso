@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>WebApps | {% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{{url_for('static', filename='img/favicon.ico')}}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <link rel="stylesheet" href="{{url_for('static', filename='plugins/fontawesome-free/css/all.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='plugins/toastr/toastr.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/adminlte.min.css')}}">
+    </head>
+    <body class="hold-transition layout-top-nav layout-fixed">
+        <div class="wrapper">
+            <div class="preloader flex-column justify-content-center align-items-center">
+                <img class="animation__shake" src="{{url_for('static', filename='img/logo_2.png')}}" alt="Expeditors" height="60" width="60">
+            </div>
+            {% include 'navbar.html' %}
+            <div class="content-wrapper">
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                {% block subtitle %}{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="container-fluid">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+            {% include 'control_sidebar.html' %}
+            {% include 'footer.html' %}
+        </div>
+        <script src="{{url_for('static', filename='plugins/jquery/jquery.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/toastr/toastr.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/adminlte.min.js')}}"></script>
+        <!-- <script src="{{url_for('static', filename='js/demo.js')}}"></script> -->
+        <script>
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category,message in messages %}
+
+                        {% if category == 'success' %}
+                            toastr.success('{{message}}')
+                            
+                        {% endif %}
+                            
+                        {% if category == 'info' %}
+                            toastr.info('{{message}}')
+                        {% endif %}
+                            
+                        {% if category == 'warning' %}
+                            toastr.warning('{{message}}')
+                        {% endif %}
+                            
+                        {% if category == 'error' %}
+                            toastr.error('{{message}}')
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}               
+        </script>
+    </body>
+</html>

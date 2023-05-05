@@ -1,0 +1,58 @@
+
+<nav class="main-header navbar navbar-expand navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ url_for('index') }}" class="navbar-brand">
+                <img src="{{url_for('static', filename='img/logo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text">GSO WebApps</span>
+            </a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Third Party Systems</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                <li><a href="{{ url_for('index') }}" class="dropdown-item">Seismic</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="{{ url_for('index') }}" class="dropdown-item">Sales Operartions Personnel Management</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+           <a id="dropdownSubMenu2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Special Projects</a>
+            <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                <li><a href="{{ url_for('index') }}" class="dropdown-item">Discovery Toolkit</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="{{ url_for('index') }}" class="dropdown-item">Monthly Commission</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="{{ url_for('index') }}" class="dropdown-item">Predictive Index</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="{{ url_for('index') }}" class="dropdown-item">Bid Debrief</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="{{ url_for('index') }}" class="dropdown-item">GRP</a></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a href="{{ url_for('index') }}" class="navbar-brand btn bg-olive">session.name</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" target="_blank" href="https://dev.azure.com/expdgsm/GSO/_dashboards/dashboard/17e5c26e-26a3-470b-a93d-f12352bbb92d" role="button" data-toggle="tooltip" data-placement="bottom" title="Submit a Request for Global Sales Operations">
+                <i class="nav-icon fas fa-bookmark"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" target="_blank" href="https://dev.azure.com/expdgsm/GSO/_dashboards/dashboard/b1a48702-ded2-4f3b-8ffa-47ef714505d6" role="button" data-toggle="tooltip" data-placement="bottom" title="Submit a Commission Related Request for Sales Operations">
+                <i class="nav-icon fas fa-hands-helping"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}" role="button" data-toggle="tooltip" data-placement="bottom" title="Admin">
+                <i class="nav-icon fas fa-lock"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                <i class="fas fa-expand-arrows-alt"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
