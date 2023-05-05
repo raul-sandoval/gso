@@ -9,29 +9,68 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-  <div class="col-12 text-center">
-    <h1 class="text-bolder">SAMSUNG</h1>
-    <h2 class="text-bolder">C0000010</h2>
-  </div>
-  <div class="col-12 text-center">
-    <div class="row justify-content-center">
-        <div class="col-2">
-          <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-info btn-block">New Search</a>
-        </div>      
-        <div class="col-2">
-          <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-primary btn-block">Download Report</a>
-        </div>      
+<div class="row justify-content-center">
+  <div class="col-4">
+    <!-- Profile Image -->
+    <div class="card card-primary card-outline">
+      <div class="card-body box-profile">
+        <h1 class="profile-username text-center">SAMSUNG</h1>
+        <p class="text-muted text-center">C0000010</p>
+        <ul class="list-group list-group-unbordered mb-3">
+          <li class="list-group-item"><b>New Logo</b> <b class="float-right">No**</b></li>
+        </ul>
+        <div class="row justify-content-center">
+          <div class="col-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-dark btn-block">New Search</a>
+          </div>      
+          <div class="col-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-primary btn-block">Download Report</a>
+          </div>      
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-12 text-center">
-    <h2 class="text-bolder mt-6">
-    <h3 class="text-bolder">New Logo</h3>
-    <h4 class="text-bolder">{{response.is_new_logo}}</h4>
-    </h2>
+<!-- Account management level -->
+<div class="row mt-4 justify-content-center">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-footer">
+        <div class="row justify-content-center">
+          <div class="col-sm-2 col-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border-right">
+              <h5 class="description-header">DNA</h5>
+              <span class="description-text">Yes</span>
+            </a>
+          </div>
+          <div class="col-sm-2 col-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border-right">
+              <h5 class="description-header">GNA</h5>
+              <span class="description-text">Yes</span>
+            </a>
+          </div>
+          <div class="col-sm-2 col-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border-right">
+              <h5 class="description-header">GTDP</h5>
+              <span class="description-text">No</span>
+            </a>
+          </div>
+          <div class="col-sm-2 col-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border-right">
+              <h5 class="description-header">ADP</h5>
+              <span class="description-text">No</span>
+            </a>
+          </div>
+          <div class="col-sm-2 col-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block">
+              <h5 class="description-header">Account Management</h5>
+              <span class="description-text">Yes</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
