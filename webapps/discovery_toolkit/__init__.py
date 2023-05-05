@@ -17,4 +17,5 @@ discovery_toolkit_blueprint = Blueprint(APP_NAME,__name__,static_folder='static'
 
 ########## Import routes [START] ##########
 import webapps.discovery_toolkit.index
+import webapps.discovery_toolkit.dashboard
 ########## Import routes  [END]  ##########
