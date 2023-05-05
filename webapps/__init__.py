@@ -8,3 +8,7 @@ app = Flask(__name__)
 app.config.from_object('config')
 Session(app)
 ########## Setup app  [END]  ##########
+
+########## Import routes [START] ##########
+import webapps.index
+########## Import routes  [END]  ##########
