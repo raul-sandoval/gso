@@ -79,7 +79,7 @@
           </div>
           <div class="col-md-4">
             <div class="text-dark description-block border-right">
-              <h3 class="text-bolder">Total GCI Matches: {{response.duns_location.total_gci_match}}</h3>
+              <h3 class="text-bolder">Total GCI Matches: {{response.duns_locations.total_gci_matches}}</h3>
             </div>
           </div>
           <div class="col-md-4">
@@ -89,13 +89,13 @@
           </div>
           <div class="col-md-4">
             <div class="text-dark description-block border-left">
-              <h3 class="text-bolder">Total Locations (D&B): {{response.duns_location.total_locations}}</h3>
+              <h3 class="text-bolder">Total Locations (D&B): {{response.duns_locations.total_locations}}</h3>
             </div>
           </div>
         </div>
       </div>
       <div class="card-body">
-        <canvas id="duns_location_chart" height="300"></canvas>
+        <canvas id="duns_locations_chart" height="300"></canvas>
       </div>
     </div>
   </div>
@@ -137,7 +137,7 @@
               <span class="info-box-icon bg-dark elevation-1"><i class="fas fa-file-video"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Phone/Web Meetings</h5>
-                <h6 class="info-box-number">Total: {{response.meetings_information.total_in_phone_web_meetings}}</h6>
+                <h6 class="info-box-number">Total: {{response.meetings_information.total_phone_web_meetings}}</h6>
               </div>
             </a>
           </div>
@@ -235,26 +235,26 @@
   var mode = 'index'
   var intersect = true
   
-  var $dunsLocationChart = $('#duns_location_chart')
+  var $dunsLocationChart = $('#duns_locations_chart')
   var dunsLocationChart = new Chart($dunsLocationChart,
   {
     type: 'bar',
     data:
     {
-      labels: {{response.duns_location.duns_location_chart.branches | tojson }},
+      labels: {{response.duns_locations.duns_locations_chart.branches | tojson }},
       datasets:
       [
         {
           label: "GCI Match",
           backgroundColor: '#3d9970',
           borderColor: '#3d9970',
-          data: {{response.duns_location.duns_location_chart.gci_matches | tojson }}
+          data: {{response.duns_locations.duns_locations_chart.gci_matches | tojson }}
         },
         {
           label: "GCI No Match",
           backgroundColor: '#ced4da',
           borderColor: '#ced4da',
-          data: {{response.duns_location.duns_location_chart.gci_no_matches | tojson }}
+          data: {{response.duns_locations.duns_locations_chart.gci_no_matches | tojson }}
         }
       ]
     },

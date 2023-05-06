@@ -48,10 +48,10 @@ def dashboard():
             'is_ADP' : ('Yes' if fake.boolean(chance_of_getting_true=10) else 'No'),
             'is_Account_Management' : ('Yes' if fake.boolean(chance_of_getting_true=50) else 'No'),
         },
-        'duns_location': {
-            'total_gci_match' : fake.random_int(min=1000, max=3500,step=6),
+        'duns_locations': {
+            'total_gci_matches' : fake.random_int(min=1000, max=3500,step=6),
             'total_locations' : fake.random_int(min=3500, max=5500,step=7),
-            'duns_location_chart' : {
+            'duns_locations_chart' : {
                 'branches': duns_branches,
                 'gci_matches': gci_matches,
                 'gci_no_matches': gci_no_matches,
@@ -59,7 +59,7 @@ def dashboard():
         },
         'meetings_information' : {
             'total_in_person_meetings': fake.random_int(min=0, max=345,step=8),
-            'total_in_phone_web_meetings': fake.random_int(min=0, max=478,step=9),
+            'total_phone_web_meetings': fake.random_int(min=0, max=478,step=9),
             'total_won_opportunities': fake.random_int(min=0, max=150,step=10),
             'total_active_opportunities': fake.random_int(min=0, max=265,step=11),
             'total_on_hold_opportunities': fake.random_int(min=0, max=40,step=12),
