@@ -79,7 +79,7 @@
           </div>
           <div class="col-md-4">
             <div class="text-dark description-block border-right">
-              <h3 class="text-bolder">Total GCI Matches: 1262</h3>
+              <h3 class="text-bolder">Total GCI Matches: {{response.duns_location.total_gci_match}}</h3>
             </div>
           </div>
           <div class="col-md-4">
@@ -89,7 +89,7 @@
           </div>
           <div class="col-md-4">
             <div class="text-dark description-block border-left">
-              <h3 class="text-bolder">Total Locations (D&B): 3718</h3>
+              <h3 class="text-bolder">Total Locations (D&B): {{response.duns_location.total_locations}}</h3>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@
               <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">In Person Meetings</h5>
-                <h6 class="info-box-number">Total: 220</h6>
+                <h6 class="info-box-number">Total: {{response.meetings_information.total_in_person_meetings}}</h6>
               </div>
             </a>
           </div>
@@ -137,7 +137,7 @@
               <span class="info-box-icon bg-dark elevation-1"><i class="fas fa-file-video"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Phone/Web Meetings</h5>
-                <h6 class="info-box-number">Total: 440</h6>
+                <h6 class="info-box-number">Total: {{response.meetings_information.total_in_phone_web_meetings}}</h6>
               </div>
             </a>
           </div>
@@ -146,7 +146,7 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-thumbs-up"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Won Opps</h5>
-                <h6 class="info-box-number">Total: 57</h6>
+                <h6 class="info-box-number">Total: {{response.meetings_information.total_won_opportunities}}</h6>
               </div>
             </a>
           </div>
@@ -155,7 +155,7 @@
               <span class="info-box-icon bg-gray elevation-1"><i class="fas fa-clipboard"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Active Opps</h5>
-                <h6 class="info-box-number">Total: 53</h6>
+                <h6 class="info-box-number">Total: {{response.meetings_information.total_active_opportunities}}</h6>
               </div>
             </a>
           </div>
@@ -164,7 +164,7 @@
               <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-eye"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">On Hold Opps</h5>
-                <h6 class="info-box-number">Total: 6</h6>
+                <h6 class="info-box-number">Total: {{response.meetings_information.total_on_hold_opportunities}}</h6>
               </div>
             </a>
           </div>
@@ -173,7 +173,7 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-down"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Lost Opps</h5>
-                <h6 class="info-box-number">Total: 46</h6>
+                <h6 class="info-box-number">Total: {{response.meetings_information.total_lost_opportunities}}</h6>
               </div>
             </a>
           </div>
@@ -241,20 +241,20 @@
     type: 'bar',
     data:
     {
-      labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: {{response.duns_location.chart.branches | tojson }},
       datasets:
       [
         {
           label: "GCI Match",
           backgroundColor: '#3d9970',
           borderColor: '#3d9970',
-          data: [1200, 200, 300, 250, 270, 250, 300]
+          data: {{response.duns_location.chart.gci_matches | tojson }}
         },
         {
           label: "GCI No Match",
           backgroundColor: '#ced4da',
           borderColor: '#ced4da',
-          data: [700, 170, 270, 200, 180, 150, 200]
+          data: {{response.duns_location.chart.gci_no_matches | tojson }}
         }
       ]
     },
