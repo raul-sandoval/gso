@@ -241,20 +241,20 @@
     type: 'bar',
     data:
     {
-      labels: {{response.duns_location.chart.branches | tojson }},
+      labels: {{response.duns_location.duns_location_chart.branches | tojson }},
       datasets:
       [
         {
           label: "GCI Match",
           backgroundColor: '#3d9970',
           borderColor: '#3d9970',
-          data: {{response.duns_location.chart.gci_matches | tojson }}
+          data: {{response.duns_location.duns_location_chart.gci_matches | tojson }}
         },
         {
           label: "GCI No Match",
           backgroundColor: '#ced4da',
           borderColor: '#ced4da',
-          data: {{response.duns_location.chart.gci_no_matches | tojson }}
+          data: {{response.duns_location.duns_location_chart.gci_no_matches | tojson }}
         }
       ]
     },
@@ -327,14 +327,14 @@
     type: 'bar',
     data:
     {
-      labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: {{response.meetings_information.meetings_activity_chart.branches | tojson }},
       datasets:
       [
         {
           label: "Completed meetings",
           backgroundColor: '#283270',
           borderColor: '#283270',
-          data: [1200, 200, 300, 250, 270, 250, 300]
+          data: {{response.meetings_information.meetings_activity_chart.total_meetings | tojson }}
         }
       ]
     },
@@ -407,20 +407,20 @@
     type: 'bar',
     data:
     {
-      labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: {{response.meetings_information.active_won_opps_chart.branches | tojson }},
       datasets:
       [
         {
           label: "Won Opps",
-          backgroundColor: '#007bff',
-          borderColor: '#007bff',
-          data: [1200, 200, 300, 250, 270, 250, 300]
+          backgroundColor: '#3d9970',
+          borderColor: '#3d9970',
+          data: {{response.meetings_information.active_won_opps_chart.won_opportunities | tojson }}
         },
         {
           label: "Active Opps",
           backgroundColor: '#ced4da',
           borderColor: '#ced4da',
-          data: [700, 170, 270, 200, 180, 150, 200]
+          data: {{response.meetings_information.active_won_opps_chart.active_opportunities | tojson }}
         }
       ]
     },
