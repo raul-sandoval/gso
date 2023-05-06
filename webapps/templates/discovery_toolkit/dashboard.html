@@ -111,7 +111,6 @@
           </div>
           <div class="col-sm-12 col-md-4">
             <div class="text-dark description-block border-right">
-
               <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-primary btn-block">Download Meetings Report</a>
             </div>
           </div>
@@ -124,69 +123,62 @@
       </div>
       <div class="card-body">
         <div class="row">
-
-          <div class="col-sm-6 col-xl-2">
-            <div class="info-box">
+          <div class="col-lg-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
               <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">In Person Meetings</h5>
                 <h6 class="info-box-number">Total: 220</h6>
               </div>
-            </div>
+            </a>
           </div>
-          <div class="col-sm-6 col-xl-2">
-            <div class="info-box">
+          <div class="col-lg-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
               <span class="info-box-icon bg-dark elevation-1"><i class="fas fa-file-video"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Phone/Web Meetings</h5>
                 <h6 class="info-box-number">Total: 440</h6>
               </div>
-            </div>
+            </a>
           </div>
-
-          <div class="col-sm-6 col-xl-2">
-            <div class="info-box">
+          <div class="col-lg-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-thumbs-up"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Won Opps</h5>
                 <h6 class="info-box-number">Total: 57</h6>
               </div>
-            </div>
+            </a>
           </div>
-          <div class="col-sm-6 col-xl-2">
-            <div class="info-box">
+          <div class="col-lg-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
               <span class="info-box-icon bg-gray elevation-1"><i class="fas fa-clipboard"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Active Opps</h5>
                 <h6 class="info-box-number">Total: 53</h6>
               </div>
-            </div>
+            </a>
           </div>
-          <div class="col-sm-6 col-xl-2">
-            <div class="info-box">
+          <div class="col-lg-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
               <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-eye"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">On Hold Opps</h5>
                 <h6 class="info-box-number">Total: 6</h6>
               </div>
-            </div>
+            </a>
           </div>
-          <div class="col-sm-6 col-xl-2">
-            <div class="info-box">
+          <div class="col-lg-6">
+            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-down"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Lost Opps</h5>
                 <h6 class="info-box-number">Total: 46</h6>
               </div>
-            </div>
+            </a>
           </div>
-
-
-
-
           <!-- fix for small devices only -->
           <div class="clearfix hidden-md-up"></div>
-
         </div>
       </div>
     </div>
@@ -199,7 +191,7 @@
       <div class="card-header">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h2 class="text-center ">Meetings activity</h2>
+            <h2 class="text-center ">Total Completed Meetings by Branch (Last 12 Months)</h2>
           </div>
           <div class="col-md-4">
             <div class="text-dark description-block">
@@ -215,7 +207,22 @@
   </div>
 </div>
 
-
+<div class="row mt-4 justify-content-center">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <h2 class="text-center ">Total Active/Won Opportunities by branch (Last 12 Months) - Top 20</h2>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <canvas id="active_won_opps_chart" height="300"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
@@ -227,8 +234,8 @@
   }
   var mode = 'index'
   var intersect = true
+  
   var $dunsLocationChart = $('#duns_location_chart')
-  // eslint-disable-next-line no-unused-vars
   var dunsLocationChart = new Chart($dunsLocationChart,
   {
     type: 'bar',
@@ -238,13 +245,179 @@
       datasets:
       [
         {
+          label: "GCI Match",
+          backgroundColor: '#3d9970',
+          borderColor: '#3d9970',
+          data: [1200, 200, 300, 250, 270, 250, 300]
+        },
+        {
           label: "GCI No Match",
+          backgroundColor: '#ced4da',
+          borderColor: '#ced4da',
+          data: [700, 170, 270, 200, 180, 150, 200]
+        }
+      ]
+    },
+    options:
+    {
+      maintainAspectRatio: false,
+      tooltips:
+      {
+        mode: 'index',
+        intersect: intersect
+      },
+      hover:
+      {
+        mode: mode,
+        intersect: intersect
+      },
+      legend:
+      {
+        display: true
+      },
+      scales:
+      {
+        yAxes:
+        [
+          {
+            stacked: true,
+            gridLines:
+            {
+              display: true,
+              lineWidth: '4px',
+              color: 'rgba(0, 0, 0, .2)',
+              zeroLineColor: 'transparent'
+            },
+            ticks: $.extend(
+            {
+              beginAtZero: true,
+              // Include a dollar sign in the ticks
+              callback: function (value)
+              {
+                if (value >= 1000)
+                {
+                  value /= 1000
+                  value += 'k'
+                }
+                return  value
+              }
+            }
+            ,ticksStyle)
+          }
+        ],
+        xAxes:
+        [
+          {
+            stacked: true,
+            display: true,
+            gridLines:
+            {
+              display: false
+            },
+            ticks: ticksStyle
+          }
+        ]
+      }
+    }
+  })
+  
+  var $meetingsActivityChart = $('#meetings_activity_chart')
+  var $meetingsActivityChart = new Chart($meetingsActivityChart,
+  {
+    type: 'bar',
+    data:
+    {
+      labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      datasets:
+      [
+        {
+          label: "Completed meetings",
+          backgroundColor: '#283270',
+          borderColor: '#283270',
+          data: [1200, 200, 300, 250, 270, 250, 300]
+        }
+      ]
+    },
+    options:
+    {
+      maintainAspectRatio: false,
+      tooltips:
+      {
+        mode: 'index',
+        intersect: intersect
+      },
+      hover:
+      {
+        mode: mode,
+        intersect: intersect
+      },
+      legend:
+      {
+        display: true
+      },
+      scales:
+      {
+        yAxes:
+        [
+          {
+            stacked: true,
+            gridLines:
+            {
+              display: true,
+              lineWidth: '4px',
+              color: 'rgba(0, 0, 0, .2)',
+              zeroLineColor: 'transparent'
+            },
+            ticks: $.extend(
+            {
+              beginAtZero: true,
+              // Include a dollar sign in the ticks
+              callback: function (value)
+              {
+                if (value >= 1000)
+                {
+                  value /= 1000
+                  value += 'k'
+                }
+                return  value
+              }
+            }
+            ,ticksStyle)
+          }
+        ],
+        xAxes:
+        [
+          {
+            stacked: true,
+            display: true,
+            gridLines:
+            {
+              display: false
+            },
+            ticks: ticksStyle
+          }
+        ]
+      }
+    }
+  })
+
+  var $activeWonOppsChart = $('#active_won_opps_chart')
+  var activeWonOppsChart = new Chart($activeWonOppsChart,
+  {
+    type: 'bar',
+    data:
+    {
+      labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      datasets:
+      [
+        {
+          label: "Won Opps",
           backgroundColor: '#007bff',
           borderColor: '#007bff',
           data: [1200, 200, 300, 250, 270, 250, 300]
         },
         {
-          label: "GCI Match",
+          label: "Active Opps",
           backgroundColor: '#ced4da',
           borderColor: '#ced4da',
           data: [700, 170, 270, 200, 180, 150, 200]
