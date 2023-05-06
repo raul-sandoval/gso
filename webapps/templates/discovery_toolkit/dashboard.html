@@ -13,10 +13,10 @@
   <div class="col-md-4">
     <div class="card card-primary card-outline">
       <div class="card-body box-profile">
-        <h2 class="text-center">SAMSUNG</h2>
-        <h3 class="text-center">C0000010</h3>
+        <h2 class="text-center">{{response.global_engagement.account_name}}</h2>
+        <h3 class="text-center">{{response.global_engagement.account_id}}</h3>
         <ul class="list-group list-group-unbordered mb-2">
-          <li class="list-group-item"><b>New Logo</b> <b class="float-right">No**</b></li>
+          <li class="list-group-item"><b>New Logo</b> <b class="float-right">{{response.global_engagement.is_new_logo}}</b></li>
         </ul>
         <div class="row justify-content-center">
           <div class="col-6">
@@ -36,31 +36,31 @@
           <div class="col-sm-6">
             <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
               <h3 class="description-header">DNA</h3>
-              <h4 class="description-header">Yes</h4>
+              <h4 class="description-header">{{response.global_engagement.is_DNA}}</h4>
             </a>
           </div>
           <div class="col-sm-6">
             <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
               <h3 class="description-header">GNA</h3>
-              <h4 class="description-header">Yes</h4>
+              <h4 class="description-header">{{response.global_engagement.is_GNA}}</h4>
             </a>
           </div>
           <div class="col-sm-6">
             <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
               <h3 class="description-header">GTDP</h3>
-              <h4 class="description-header">No</h4>
+              <h4 class="description-header">{{response.global_engagement.is_GTDP}}</h4>
             </a>
           </div>
           <div class="col-sm-6">
             <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
               <h3 class="description-header">ADP</h3>
-              <h4 class="description-header">No</h4>
+              <h4 class="description-header">{{response.global_engagement.is_ADP}}</h4>
             </a>
           </div>
           <div class="col-sm-6">
             <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
               <h3 class="description-header">Account Management</h3>
-              <h4 class="description-header">Yes</h4>
+              <h4 class="description-header">{{response.global_engagement.is_Account_Management}}</h4>
             </a>
           </div>
         </div>
