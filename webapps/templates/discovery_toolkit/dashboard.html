@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% set badge_color = 'bg-info' if response.global_engagement.is_new_logo == 'Yes' else 'bg-primary' %}
+
 {% block title %}
   Discovery Toolkit Dashboard
 {% endblock %}
@@ -16,7 +18,7 @@
         <h2 class="text-center">{{response.global_engagement.account_name}}</h2>
         <h3 class="text-center">{{response.global_engagement.account_id}}</h3>
         <ul class="list-group list-group-unbordered mb-2">
-          <li class="list-group-item"><b>New Logo</b> <b class="float-right">{{response.global_engagement.is_new_logo}}</b></li>
+          <li class="list-group-item"><b>New Logo</b> <span class="float-right badge {{badge_color}}">{{response.global_engagement.is_new_logo}}</span></li>
         </ul>
         <div class="row justify-content-center">
           <div class="col-6">
