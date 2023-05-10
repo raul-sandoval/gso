@@ -34,6 +34,7 @@ def opportunities(account_id,type_id):
     json.dumps(parsed, indent=4)
     records = parsed
 
+
     match type_id:
         case 'WON':
             opportunity_type = 'Won opportunities'
