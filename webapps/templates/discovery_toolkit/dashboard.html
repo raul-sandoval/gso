@@ -124,7 +124,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-lg-6">
-            <a href="{{ url_for('discovery_toolkit.meetings') }}" class="text-dark info-box">
+            <a href="{{ url_for('discovery_toolkit.meetings',account_id=response.global_engagement.account_id,type_id='INPERSON') }}" class="text-dark info-box">
               <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">In Person Meetings</h5>
@@ -133,7 +133,7 @@
             </a>
           </div>
           <div class="col-lg-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
+            <a href="{{ url_for('discovery_toolkit.meetings',account_id=response.global_engagement.account_id,type_id='PHONE') }}" class="text-dark info-box">
               <span class="info-box-icon bg-dark elevation-1"><i class="fas fa-file-video"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Phone/Web Meetings</h5>
