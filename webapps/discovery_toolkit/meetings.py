@@ -27,7 +27,7 @@ def meetings(account_id,type_id):
     df_input = vizcrm_get(strQuery)
 
     df_input['meeting_start_date_time'] = pd.to_datetime(df_input.meeting_start_date_time)
-    df_input['meeting_start_date_time'] = df_input['meeting_start_date_time'].dt.strftime('%m/%d/%Y')
+    df_input['meeting_start_date_time'] = df_input['meeting_start_date_time'].dt.strftime('%m/%d/%Y %X')
     df_input['email_address'] = df_input['email_address'].str.lower()
 
     records = df_input.to_json(orient="table")
