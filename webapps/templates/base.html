@@ -44,11 +44,34 @@
         </div>
         <script src="{{url_for('static', filename='plugins/jquery/jquery.min.js')}}"></script>
         <script src="{{url_for('static', filename='plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+        <script src="{{url_for('static', filename='plugins/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
         <script src="{{url_for('static', filename='plugins/toastr/toastr.min.js')}}"></script>
         <script src="{{url_for('static', filename='js/adminlte.min.js')}}"></script>
         <script src="{{url_for('static', filename='plugins/chart.js/Chart.min.js')}}"></script>
         <!-- <script src="{{url_for('static', filename='js/demo.js')}}"></script> -->
         {% block scripts %}{% endblock %}
+        <script>
+            $(function () {
+              $("#datatable").DataTable({
+                "responsive": true
+                ,"lengthChange": false
+                ,"autoWidth": false
+                ,"ordering": true
+                ,'paging': false
+                ,"buttons": ["copy", "csv", "excel", "pdf", "print"]
+              }).buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
+            });
+        </script>
         <script>
             toastr.options = {
                 "closeButton": true,
