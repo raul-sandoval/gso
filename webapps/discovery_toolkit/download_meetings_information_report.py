@@ -18,7 +18,9 @@ def download_meetings_information_report(account_id):
     strQuery = fd.read()
     fd.close()
     strQuery = strQuery.replace("${Account_Id}",account_id)
+    strQuery = strQuery.replace("AND (M.MEETING_METHOD_CODE IN ${MEETING_METHOD_CODE})",'')
     df_input = vizcrm_get(strQuery)
+
 
     # Creating output and writer (pandas excel writer)
     out = io.BytesIO()
