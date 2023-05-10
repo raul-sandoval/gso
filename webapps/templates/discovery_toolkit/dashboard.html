@@ -142,7 +142,7 @@
             </a>
           </div>
           <div class="col-lg-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
+            <a href="{{ url_for('discovery_toolkit.opportunities',account_id=response.global_engagement.account_id,type_id='WON') }}" class="text-dark info-box">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-thumbs-up"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Won Opps</h5>
@@ -151,7 +151,7 @@
             </a>
           </div>
           <div class="col-lg-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
+            <a href="{{ url_for('discovery_toolkit.opportunities',account_id=response.global_engagement.account_id,type_id='ACTIVE') }}" class="text-dark info-box">
               <span class="info-box-icon bg-gray elevation-1"><i class="fas fa-clipboard"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Active Opps</h5>
@@ -160,7 +160,7 @@
             </a>
           </div>
           <div class="col-lg-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
+            <a href="{{ url_for('discovery_toolkit.opportunities',account_id=response.global_engagement.account_id,type_id='HOLD') }}" class="text-dark info-box">
               <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-eye"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">On Hold Opps</h5>
@@ -169,7 +169,7 @@
             </a>
           </div>
           <div class="col-lg-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
+            <a href="{{ url_for('discovery_toolkit.opportunities',account_id=response.global_engagement.account_id,type_id='LOST') }}" class="text-dark info-box">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-down"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">Lost Opps</h5>
@@ -195,7 +195,7 @@
           </div>
           <div class="col-md-4">
             <div class="text-dark description-block">
-              <a href="https://exporeporting2.corp.expeditors.com/sree/app/viewer/view/global/Sales%20and%20Marketing/Global%20Engagement?drillId=drill1" target="_blank" class="btn btn-primary btn-block">Download Report</a>
+              <a href="https://exporeporting2.corp.expeditors.com/sree/app/viewer/view/global/Sales%20and%20Marketing/Global%20Engagement?drillId=drill1" target="_blank" class="btn btn-primary btn-block">Link to the CRM Meetings</a>
             </div>
           </div>
         </div>
