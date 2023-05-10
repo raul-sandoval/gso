@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% set badge_color = 'bg-info' if response.global_engagement.is_new_logo == 'Yes' else 'bg-primary' %}
-
 {% block title %}
   Discovery Toolkit Dashboard
 {% endblock %}
@@ -18,14 +16,14 @@
         <h2 class="text-center">{{response.global_engagement.account_name}}</h2>
         <h3 class="text-center">{{response.global_engagement.account_id}}</h3>
         <ul class="list-group list-group-unbordered mb-2">
-          <li class="list-group-item"><b>New Logo</b> <span class="float-right badge {{badge_color}}">{{response.global_engagement.is_new_logo}}</span></li>
+          <li class="list-group-item"><b>New Logo</b> <span class="float-right badge bg-info">{{response.global_engagement.is_new_logo}}</span></li>
         </ul>
         <div class="row justify-content-center">
           <div class="col-6">
             <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-dark btn-block">New Search</a>
           </div>      
           <div class="col-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-primary btn-block">Download Report</a>
+            <a href="{{ url_for('discovery_toolkit.download_global_engagement_report',account_id=response.global_engagement.account_id) }}" class="btn btn-primary btn-block">Download Report</a>
           </div>      
         </div>
       </div>
@@ -36,33 +34,33 @@
       <div class="card-body">
         <div class="row justify-content-center">
           <div class="col-sm-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
+            <a href="{{response.global_engagement.DNA.url}}" class="text-dark description-block border">
               <h3 class="description-header">DNA</h3>
-              <h4 class="description-header">{{response.global_engagement.is_DNA}}</h4>
+              <h4 class="description-header">{{response.global_engagement.DNA.is_DNA}}</h4>
             </a>
           </div>
           <div class="col-sm-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
+            <a href="{{response.global_engagement.GNA.url}}" class="text-dark description-block border">
               <h3 class="description-header">GNA</h3>
-              <h4 class="description-header">{{response.global_engagement.is_GNA}}</h4>
+              <h4 class="description-header">{{response.global_engagement.GNA.is_GNA}}</h4>
             </a>
           </div>
           <div class="col-sm-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
+            <a href="{{response.global_engagement.GTDP.url}}" class="text-dark description-block border">
               <h3 class="description-header">GTDP</h3>
-              <h4 class="description-header">{{response.global_engagement.is_GTDP}}</h4>
+              <h4 class="description-header">{{response.global_engagement.GTDP.is_GTDP}}</h4>
             </a>
           </div>
           <div class="col-sm-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
+            <a href="{{response.global_engagement.ADP.url}}" class="text-dark description-block border">
               <h3 class="description-header">ADP</h3>
-              <h4 class="description-header">{{response.global_engagement.is_ADP}}</h4>
+              <h4 class="description-header">{{response.global_engagement.ADP.is_ADP}}</h4>
             </a>
           </div>
           <div class="col-sm-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark description-block border">
+            <a href="{{response.global_engagement.Account_Management.url}}" class="text-dark description-block border">
               <h3 class="description-header">Account Management</h3>
-              <h4 class="description-header">{{response.global_engagement.is_Account_Management}}</h4>
+              <h4 class="description-header">{{response.global_engagement.Account_Management.is_Account_Management}}</h4>
             </a>
           </div>
         </div>
@@ -86,7 +84,7 @@
           </div>
           <div class="col-md-4">
             <div class="text-dark description-block">
-              <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-primary btn-block">Download Report</a>
+              <a href="{{ url_for('discovery_toolkit.download_duns_location_report',account_id=response.global_engagement.account_id) }}" class="btn btn-primary btn-block">Download Report</a>
             </div>
           </div>
           <div class="col-md-4">
@@ -113,12 +111,12 @@
           </div>
           <div class="col-sm-12 col-md-4">
             <div class="text-dark description-block border-right">
-              <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-primary btn-block">Download Meetings Report</a>
+              <a href="{{ url_for('discovery_toolkit.download_meetings_information_report',account_id=response.global_engagement.account_id) }}" class="btn btn-primary btn-block">Download Meetings Report</a>
             </div>
           </div>
           <div class="col-sm-12 col-md-4">
             <div class="text-dark description-block border-left">
-              <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-primary btn-block">Download Opportunities Report</a>
+              <a href="{{ url_for('discovery_toolkit.download_opportunities_information_report',account_id=response.global_engagement.account_id) }}" class="btn btn-primary btn-block">Download Opportunities Report</a>
             </div>
           </div>
         </div>
@@ -126,7 +124,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-lg-6">
-            <a href="{{ url_for('discovery_toolkit.index') }}" class="text-dark info-box">
+            <a href="{{ url_for('discovery_toolkit.meetings') }}" class="text-dark info-box">
               <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
               <div class="info-box-content">
                 <h5 class="info-box-text">In Person Meetings</h5>
@@ -197,7 +195,7 @@
           </div>
           <div class="col-md-4">
             <div class="text-dark description-block">
-              <a href="{{ url_for('discovery_toolkit.index') }}" class="btn btn-primary btn-block">Download Report</a>
+              <a href="https://exporeporting2.corp.expeditors.com/sree/app/viewer/view/global/Sales%20and%20Marketing/Global%20Engagement?drillId=drill1" target="_blank" class="btn btn-primary btn-block">Download Report</a>
             </div>
           </div>
         </div>
@@ -243,20 +241,20 @@
     type: 'bar',
     data:
     {
-      labels: {{response.duns_locations.duns_locations_chart.branches | tojson }},
+      labels: {{response.duns_locations.duns_locations_chart.duns_countries | tojson }},
       datasets:
       [
         {
           label: "GCI Match",
           backgroundColor: '#3d9970',
           borderColor: '#3d9970',
-          data: {{response.duns_locations.duns_locations_chart.gci_matches | tojson }}
+          data: {{response.duns_locations.duns_locations_chart.duns_gci_matches | tojson }}
         },
         {
           label: "GCI No Match",
           backgroundColor: '#ced4da',
           borderColor: '#ced4da',
-          data: {{response.duns_locations.duns_locations_chart.gci_no_matches | tojson }}
+          data: {{response.duns_locations.duns_locations_chart.duns_gci_no_matches | tojson }}
         }
       ]
     },

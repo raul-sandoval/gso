@@ -16,6 +16,11 @@ discovery_toolkit_blueprint = Blueprint(APP_NAME,__name__,static_folder='static'
 ########## Global variables  [END]  ##########
 
 ########## Import routes [START] ##########
-import webapps.discovery_toolkit.index
 import webapps.discovery_toolkit.dashboard
+import webapps.discovery_toolkit.download_duns_location_report
+import webapps.discovery_toolkit.download_global_engagement_report
+import webapps.discovery_toolkit.download_meetings_information_report
+import webapps.discovery_toolkit.download_opportunities_information_report
+import webapps.discovery_toolkit.index
+import webapps.discovery_toolkit.meetings
 ########## Import routes  [END]  ##########
