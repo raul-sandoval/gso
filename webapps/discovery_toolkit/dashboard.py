@@ -2,6 +2,8 @@
 from faker import Faker
 from flask import flash
 from flask import render_template
+from flask import request
+from flask import session
 from flask import url_for
 from webapps.discovery_toolkit import APP_NAME
 from webapps.discovery_toolkit import INPUT_PATH
@@ -21,7 +23,15 @@ from webapps.discovery_toolkit.functions import fnGetGSE_GTDP_DNA
 @discovery_toolkit_blueprint.route("/dashboard",methods=['GET','POST'])
 def dashboard():
 
-    account_id = 'C0000010'
+    if request.method == 'GET':
+        account_id = (session.get('toolkit_account_id') if ('toolkit_account_id' in session) else '-')
+    else:
+        account_id = (request.form.get('account_id') if ('account_id' in request.form) else '-')
+
+    account_id = account_id.upper()
+    session['toolkit_account_id'] = account_id
+
+
     account_name = fnGetAccountName(account_id)
 
     is_DNA = '-'
