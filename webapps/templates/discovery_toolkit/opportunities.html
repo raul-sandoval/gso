@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Discovery Toolkit Meetings
+{% endblock %}
+
+{% block subtitle %}
+
+{% endblock %}
+
+{% block content %}
+<div class="row d-flex p-0">
+  <div class="col-8 mx-auto">
+    <div class="card">
+      <div class="card-header d-flex">
+        <h2 class="mx-auto"> <u><span class="text-bold">{{response.account_name}}</span></u> <span>{{response.opportunity_type}}</span></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row  d-flex">
+  <div class="col-12 mx-auto">
+    <div class="card">
+      <!-- /.card-header -->
+      <div class="card-body">
+        <table id="datatable" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th class="text-right">Date</th>
+            <th>Description</th>
+            <th class="text-center">Branch</th>
+            <th>Owner</th>
+            <th>Onwer Title</th>
+            <th>Email</th>
+            <th>Type</th>
+          </tr>
+          </thead>
+          <tbody>
+            {% for record in response.records.data %}
+            <tr>
+              <td class="text-right">
+                {{record.last_modification_date_time}}
+              </td>
+              <td>
+                {{record.opportunity_description}}
+                <button id="button_{{record.opportunity_id}}" name="button_{{record.opportunity_id}}" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#M{{record.opportunity_id}}">
+                  Open notes
+                </button>
+                <div class="modal fade" id="M{{record.opportunity_id}}" tabindex="-1" role="dialog" aria-labelledby="M{{record.opportunity_id}}Label" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="M{{record.opportunity_id}}Label">{{record.opportunity_description}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        {{record.opportunity_solution}}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">{{record.branch}}</td>
+              <td>{{record.first_name}} {{record.last_name}}</td>
+              <td>{{record.title}}</td>
+              <td>{{record.email_address}}</td>
+              <td>{{record.opportunity_type_code}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Branch</th>
+              <th>Owner</th>
+              <th>Onwer Title</th>
+              <th>Email</th>
+              <th>Type</th>
+              
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+  </div>
+</div>
+{% endblock %}

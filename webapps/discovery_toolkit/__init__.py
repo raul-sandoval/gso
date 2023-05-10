@@ -23,4 +23,5 @@ import webapps.discovery_toolkit.download_meetings_information_report
 import webapps.discovery_toolkit.download_opportunities_information_report
 import webapps.discovery_toolkit.index
 import webapps.discovery_toolkit.meetings
+import webapps.discovery_toolkit.opportunities
 ########## Import routes  [END]  ##########
