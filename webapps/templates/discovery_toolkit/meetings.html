@@ -9,12 +9,85 @@
 {% endblock %}
 
 {% block content %}
-<div class="row  d-flex">
+<div class="row d-flex p-0">
   <div class="col-8 mx-auto">
     <div class="card">
       <div class="card-header d-flex">
-        <h1 class="mx-auto">Discovery Toolkit Meetings</h1>
+        <h2 class="mx-auto"> <u><span class="text-bold">{{response.account_name}}</span></u> <span>{{response.meeting_type}}</span></h2>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="row  d-flex">
+  <div class="col-12 mx-auto">
+    <div class="card">
+      <!-- /.card-header -->
+      <div class="card-body">
+        <table id="datatable" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th class="text-right">Date</th>
+            <th>Subject</th>
+            <th class="text-center">Branch</th>
+            <th>Owner</th>
+            <th>Onwer Title</th>
+            <th>Email</th>
+            <th class="d-none">Notes</th>
+          </tr>
+          </thead>
+          <tbody>
+            {% for record in response.records.data %}
+            <tr>
+              <td class="text-right">
+                {{record.meeting_start_date_time}}
+              </td>
+              <td>
+                {{record.meeting_subject}}
+                <button id="button_{{record.meeting_key}}" name="button_{{record.meeting_key}}" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#M{{record.meeting_key}}">
+                  Open notes
+                </button>
+                <div class="modal fade" id="M{{record.meeting_key}}" tabindex="-1" role="dialog" aria-labelledby="M{{record.meeting_key}}Label" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="M{{record.meeting_key}}Label">{{record.meeting_subject}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        {{record.post_meeting_notes}}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">{{record.owning_branch_code}}</td>
+              <td>{{record.first_name}} {{record.last_name}}</td>
+              <td>{{record.title}}</td>
+              <td>{{record.email_address}}</td>
+              <td class="d-none">{{record.post_meeting_notes}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Date</th>
+              <th>Subject</th>
+              <th>Branch</th>
+              <th>Owner</th>
+              <th>Onwer Title</th>
+              <th>Email</th>
+              <th class="d-none">Notes</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <!-- /.card-body -->
     </div>
   </div>
 </div>
