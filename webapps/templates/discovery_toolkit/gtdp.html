@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Discovery Toolkit GTDP
+{% endblock %}
+
+{% block subtitle %}
+
+{% endblock %}
+
+{% block content %}
+<div class="row d-flex">
+  <div class="col-8 mx-auto">
+    <div class="card">
+      <div class="card-header d-flex">
+        <button class="btn btn-app btn-xs bg-dark" onclick="history.back()">
+          <i class="fa fa-arrow-left"></i>
+        </button>
+        <h2 class="mx-auto"> <u><span class="text-bold">{{response.account_name}}</span></u> <span>GTDP</span></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row d-flex">
+
+  {% if response.new_business.data|length > 0 %}
+  <div class="col-md-3 mx-auto">
+    {% for row in response.new_business.data %}
+    <div class="card card-olive">
+      <div class="card-header d-flex">
+        <h3 class="card-title mx-auto">New Business</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="text-bold mr-1">{{row.CLIENT_NAME}}</h3>
+          </div>
+          <div class="col-12 d-flex">
+            <h4 class="mx-auto mr-1">{{row.GCI}}</h4>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h5 class="text-bold"><i class="fa fa-bolt"></i> Branch: </h5><span class="text-muted">&nbsp;&nbsp; {{row.BRANCH}}</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h5 class="text-bold"><i class="fa fa-bolt"></i> Owner: </h5><span class="text-muted">&nbsp;&nbsp; {{row.OWNERS}}</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h5 class="text-bold"><i class="fa fa-bolt"></i> Title: </h5><span class="text-muted">&nbsp;&nbsp; {{row.TITLES}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if response.existing.data|length > 0 %}
+  <div class="col-md-3 mx-auto">
+    {% for row in response.existing.data %}
+    <div class="card card-gray">
+      <div class="card-header d-flex">
+        <h3 class="card-title mx-auto">Existing</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="text-bold mr-1">{{row.CLIENT_NAME}}</h3>
+          </div>
+          <div class="col-12 d-flex">
+            <h4 class="mx-auto mr-1">{{row.GCI}}</h4>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h5 class="text-bold"><i class="fa fa-bolt"></i> Branch: </h5><span class="text-muted">&nbsp;&nbsp; {{row.BRANCH}}</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h5 class="text-bold"><i class="fa fa-bolt"></i> Owner: </h5><span class="text-muted">&nbsp;&nbsp; {{row.OWNERS}}</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h5 class="text-bold"><i class="fa fa-bolt"></i> Title: </h5><span class="text-muted">&nbsp;&nbsp; {{row.TITLES}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if response.no_revenue.data|length > 0 %}
+  <div class="col-md-3 mx-auto">
+    {% for row in response.no_revenue.data %}
+    <div class="card card-danger">
+      <div class="card-header d-flex">
+        <h3 class="card-title mx-auto">No Revenue</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="text-bold mr-1">{{row.CLIENT_NAME}}</h3>
+          </div>
+          <div class="col-12 d-flex">
+            <h4 class="mx-auto mr-1">{{row.GCI}}</h4>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h5 class="text-bold"><i class="fa fa-bolt"></i> Branch: </h5><span class="text-muted">&nbsp;&nbsp; {{row.BRANCH}}</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h5 class="text-bold"><i class="fa fa-bolt"></i> Owner: </h5><span class="text-muted">&nbsp;&nbsp; {{row.OWNERS}}</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h5 class="text-bold"><i class="fa fa-bolt"></i> Title: </h5><span class="text-muted">&nbsp;&nbsp; {{row.TITLES}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
