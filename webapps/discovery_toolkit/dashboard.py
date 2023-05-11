@@ -67,23 +67,23 @@ def dashboard():
             'is_new_logo' : ('Yes' if fake.boolean(chance_of_getting_true=25) else 'No'),
             'DNA' : {
                 'is_DNA': is_DNA,
-                'url': '#',
+                'url': ('dna/' + account_id if is_DNA == 'Yes' else '#'),
             },
             'GNA' : {
                 'is_GNA': is_GNA,
-                'url': '#',
+                'url': ('gna/' + account_id if is_GNA == 'Yes' else '#'),
             },
             'GTDP' : {
                 'is_GTDP': is_GTDP,
-                'url': '#',
+                'url': ('gtdp/' + account_id if is_GTDP == 'Yes' else '#'),
             },
             'ADP' : {
                 'is_ADP': is_ADP,
-                'url': '#',
+                'url': ('adp/' + account_id if is_ADP == 'Yes' else '#'),
             },
             'Account_Management' : {
                 'is_Account_Management': is_Account_Management,
-                'url': '#',
+                'url': ('account_management/' + account_id if is_Account_Management == 'Yes' else '#'),
             },
         },
         'duns_locations': {
