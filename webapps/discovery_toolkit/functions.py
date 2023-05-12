@@ -145,3 +145,26 @@ def fnGetCountOfOpportunities(pAccountId):
 
     return response
 ########## def fnGetCountOfOpportunities(pAccountId):  [END]  ##########
+
+########## def fnGetAccountManagementLevel(pAccountId,pDataFrames=False): [START] ##########
+def fnGetAccountManagementLevel(pAccountId,pDataFrames=False):
+    fd = open(SQL_PATH + 'get_account_management_level.sql')
+    strQuery = fd.read()
+    fd.close()
+    strQuery = strQuery.replace("${Account_Id}",pAccountId)
+    df_input = vizcrm_get(strQuery)
+    df_input = df_input.drop_duplicates(subset='manager_id', keep="first")
+
+    cam = df_input[df_input['acc_management'].str.contains("CAM")]
+    dist = df_input[df_input['acc_management'].str.contains("DIST")]
+    gam = df_input[df_input['acc_management'].str.contains("GAM")]
+    lam = df_input[df_input['acc_management'].str.contains("LAM")]
+    sales_pileline = df_input[df_input['acc_management'].str.contains("Sales Pipeline")]
+    if not pDataFrames:
+        cam = len(df_input[df_input['acc_management'].str.contains("CAM")])
+        dist = len(df_input[df_input['acc_management'].str.contains("DIST")])
+        gam = len(df_input[df_input['acc_management'].str.contains("GAM")])
+        lam = len(df_input[df_input['acc_management'].str.contains("LAM")])
+        sales_pileline = len(df_input[df_input['acc_management'].str.contains("Sales Pipeline")])
+    return cam,dist,gam,lam,sales_pileline
+########## def fnGetAccountManagementLevel(pAccountId,pDataFrames=False):  [END]  ##########

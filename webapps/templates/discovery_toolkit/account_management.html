@@ -13,9 +13,172 @@
   <div class="col-8 mx-auto">
     <div class="card">
       <div class="card-header d-flex">
-        <h1 class="mx-auto">Discovery Toolkit Account Management</h1>
+        <button class="btn btn-app btn-xs bg-dark" onclick="history.back()">
+          <i class="fa fa-arrow-left"></i>
+        </button>
+        <h2 class="mx-auto"> <u><span class="text-bold">{{response.account_name}}</span></u> <span>Account Management</span></h2>
       </div>
     </div>
   </div>
+</div>
+
+<div class="row d-flex">
+
+  {% if response.cam_owner != '-' %}
+  <div class="col-md-3 mx-auto">
+    <div class="card card-olive">
+      <div class="card-header d-flex">
+        <h3 class="card-title mx-auto">Management Level: CAM</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="row">
+            <div class="col-12 d-flex">
+              <h3 class="text-bold mr-1 mx-auto">Account Owner:</h3>
+            </div>
+            <div class="col-12">
+              <h4 class="text-bold mr-1">{{response.cam_owner}}</h4>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          {% for row in response.cam.data %}
+          <div class="col-12 d-flex">
+            <span class="text-bold"><i class="fa fa-minus"></i> </span>
+            &nbsp;&nbsp;
+            <span class="ps-3">{{row.manager_name}} {{row.manager_last_name}}, {{row.manager_title}}, <span class="text-bold">{{row.manager_branch}}</span> </span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if response.dist_owner != '-' %}
+  <div class="col-md-3 mx-auto">
+    <div class="card card-olive">
+      <div class="card-header d-flex">
+        <h3 class="card-title mx-auto">Management Level: DIST</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="row">
+            <div class="col-12 d-flex">
+              <h3 class="text-bold mr-1 mx-auto">Account Owner:</h3>
+            </div>
+            <div class="col-12">
+              <h4 class="text-bold mr-1">{{response.dist_owner}}</h4>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          {% for row in response.dist.data %}
+          <div class="col-12 d-flex">
+            <span class="text-bold"><i class="fa fa-minus"></i> </span>
+            &nbsp;&nbsp;
+            <span class="ps-3">{{row.manager_name}} {{row.manager_last_name}}, {{row.manager_title}}, <span class="text-bold">{{row.manager_branch}}</span> </span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if response.gam_owner != '-' %}
+  <div class="col-md-3 mx-auto">
+    <div class="card card-olive">
+      <div class="card-header d-flex">
+        <h3 class="card-title mx-auto">Management Level: GAM</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="row">
+            <div class="col-12 d-flex">
+              <h3 class="text-bold mr-1 mx-auto">Account Owner:</h3>
+            </div>
+            <div class="col-12">
+              <h4 class="text-bold mr-1">{{response.gam_owner}}</h4>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          {% for row in response.gam.data %}
+          <div class="col-12 d-flex">
+            <span class="text-bold"><i class="fa fa-minus"></i> </span>
+            &nbsp;&nbsp;
+            <span class="ps-3">{{row.manager_name}} {{row.manager_last_name}}, {{row.manager_title}}, <span class="text-bold">{{row.manager_branch}}</span> </span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if response.lam_owner != '-' %}
+  <div class="col-md-3 mx-auto">
+    <div class="card card-olive">
+      <div class="card-header d-flex">
+        <h3 class="card-title mx-auto">Management Level: LAM</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h3 class="text-bold mr-1 mx-auto">Account Owner:</h3>
+          </div>
+          <div class="col-12">
+            <h4 class="text-bold mr-1">{{response.lam_owner}}</h4>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          {% for row in response.lam.data %}
+          <div class="col-12 d-flex">
+            <span class="text-bold"><i class="fa fa-minus"></i> </span>
+            &nbsp;&nbsp;
+            <span class="ps-3">{{row.manager_name}} {{row.manager_last_name}}, {{row.manager_title}}, <span class="text-bold">{{row.manager_branch}}</span> </span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if response.sales_pileline_owner != '-' %}
+  <div class="col-md-3 mx-auto">
+    <div class="card card-olive">
+      <div class="card-header d-flex">
+        <h3 class="card-title mx-auto">Management Level: Sales Pileline</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 d-flex">
+            <h3 class="text-bold mr-1 mx-auto">Account Owner:</h3>
+          </div>
+          <div class="col-12">
+            <h4 class="text-bold mr-1">{{response.sales_pileline_owner}}</h4>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          {% for row in response.sales_pileline.data %}
+          <div class="col-12 d-flex">
+            <span class="text-bold"><i class="fa fa-minus"></i> </span>
+            &nbsp;&nbsp;
+            <span class="ps-3">{{row.manager_name}} {{row.manager_last_name}}, {{row.manager_title}}, <span class="text-bold">{{row.manager_branch}}</span> </span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
 </div>
 {% endblock %}
